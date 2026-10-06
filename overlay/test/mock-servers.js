@@ -5,7 +5,7 @@ const send = (res, o, code = 200) => { res.writeHead(code, { "Content-Type": "ap
 
 http.createServer(async (req, res) => { // fake Groq on 9101
   const raw = await body(req);
-  if (req.url.endsWith("/audio/transcriptions")) return send(res, { text: "open the devpost hackathons page" });
+  if (req.url.endsWith("/audio/transcriptions")) return send(res, { text: "Nexus, hello there" });
   if (req.url.endsWith("/chat/completions")) {
     if (req.headers.authorization !== "Bearer gsk_mock_key") return send(res, { error: "bad key" }, 401);
     const j = JSON.parse(raw); const last = j.messages[j.messages.length - 1];
