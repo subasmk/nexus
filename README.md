@@ -1,53 +1,42 @@
+<div align="center">
+
+<img src="docs/nexus-concept.jpg" width="320" alt="Nexus character"/>
+
 # NEXUS
 
-**Study beyond limits.** A free, local AI study buddy you can talk to in **Tamil and English**.
-Runs on your own laptop with [Ollama](https://ollama.com). No cloud AI, no API keys, no cost.
+**Study beyond limits.** A free AI study buddy you can talk to in Tamil and English, running on your own laptop.
 
-![Nexus look](docs/nexus-concept.jpg)
+![Free](https://img.shields.io/badge/cost-free-16a34a?style=flat-square) ![Local AI](https://img.shields.io/badge/AI-local_Ollama-0ea5e9?style=flat-square) ![Languages](https://img.shields.io/badge/languages-Tamil_%2B_English-f59e0b?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-lightgrey?style=flat-square)
 
-## Phase 1 (this version): voice chat
+</div>
 
-- Talk with the mic or type, in Tamil or English
-- Streaming replies from a local Ollama model, spoken back sentence by sentence
-- Dark HUD interface with a live waveform and a character that reacts (listening, thinking, speaking)
-- Pick any model you have pulled in Ollama from the panel
-- Chats stay on your laptop (browser storage)
+---
 
-Coming next: your own notes with citations (phase 3), reading your screen on request (phase 4),
-camera and phone (phase 5). Locked items are shown in the menu.
+## What it is
 
-## Built for a modest laptop
+Nexus is a 2D character that lives on your desktop and talks with you while you study. It listens, thinks, answers out loud and reacts on screen. The AI model runs locally through [Ollama](https://ollama.com), so there are no subscriptions and no cost.
 
-Target laptop: RTX 3050 with 6 GB VRAM and 16 GB RAM. Not yet tested on that machine; the interface was tested against a mock Ollama only. Default model: `gemma3` (about 3.3 GB).
-Fallback if it is slow: `llama3.2:3b`. Everything else is the browser plus a tiny Python server
-(standard library only, nothing to `pip install`).
+## Features
 
-## Run it on Windows
+- **Voice chat in Tamil and English.** Talk with the mic or type. Replies stream in and are spoken back sentence by sentence.
+- **A character that reacts.** Listening, thinking and speaking each have their own look, with a live waveform in a dark HUD interface.
+- **Your model, your choice.** Pick any model you have pulled in Ollama from the panel. Default is `gemma3`.
+- **Private by default.** Chats stay on your laptop.
+- **Desktop overlay.** An Electron overlay in [`overlay/`](overlay/) puts the character on your screen with hands-free voice, memory and permission-gated tools.
+- **Built for a modest laptop.** Aimed at 6 GB VRAM and 16 GB RAM.
 
-1. Install **Ollama** from https://ollama.com/download and open it once.
-2. Open **PowerShell** and run: `ollama pull gemma3` (one time, about 3.3 GB download).
-3. Install **Python 3** from https://www.python.org/downloads/ (tick "Add python.exe to PATH").
-4. Download this repo (green **Code** button, **Download ZIP**, extract) or `git clone` it.
-5. Double-click **run.bat**. Your browser opens at http://localhost:8080.
-6. Use **Chrome or Edge**. Allow the microphone when asked.
+## Roadmap
 
-Stop it by closing the black window.
+Your own notes with citations, reading your screen on request, camera and phone support.
 
-## Notes and limits
+## Good to know
 
-- Voice input uses the browser's speech recognition (Chrome/Edge). It needs internet and sends your
-  audio to the browser vendor's speech service. The AI model itself stays fully local.
-- Tamil voice output needs a Tamil voice on Windows (Settings, Time and language, Speech, Add voices).
-  Without it Nexus still answers in Tamil text. Edge usually has online Tamil voices.
-- Small models make mistakes, especially in Tamil. Check important answers against your notes.
-- The portrait is an AI-generated original illustration, not a copy of an existing character.
+Voice input uses the browser's speech recognition (Chrome or Edge). Small local models can make mistakes, especially in Tamil, so check important answers against your notes. The portrait is an original AI-generated illustration.
 
-## Files
+## Get it
 
-- `server.py` serves the page and forwards chat to Ollama
-- `web/` the interface (`index.html`, `style.css`, `app.js`)
-- `tools-mock-ollama.py` a fake Ollama used for testing the interface without a GPU
+Clone or download this repo and double-click `run.bat` on Windows. Ollama is required. The overlay setup is in [`overlay/README.md`](overlay/README.md).
 
-## Licence
+## Built by
 
-MIT
+[Subash M K](https://github.com/subasmk). MIT licensed.
