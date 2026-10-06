@@ -17,6 +17,8 @@
     <img id="portrait" class="hit" src="assets/nexus.png" alt="Nexus" draggable="false">
   </div>
 
+  <div id="listenBar" class="hit" hidden><i id="dot"></i><span id="listenText"></span><button id="listenOff">MIC OFF</button></div>
+
   <div id="dock" class="hit">
     <button id="mic" title="Talk (Ctrl+Shift+Space)">MIC</button>
     <button id="lang" title="Voice language: auto / English / Tamil">auto</button>
@@ -33,6 +35,9 @@
       <div class="row"><span>Private mode (local only)</span><label class="sw"><input type="checkbox" id="privateOn"><i></i></label></div>
       <div class="row"><span>Pause all actions</span><label class="sw"><input type="checkbox" id="pausedOn"><i></i></label></div>
       <div class="row"><span>Speak replies</span><label class="sw"><input type="checkbox" id="speakOn"><i></i></label></div>
+      <div class="row"><span>Hands-free listening (mic always on)</span><label class="sw"><input type="checkbox" id="handsFreeOn"><i></i></label></div>
+      <div class="row"><span>Only react after I say "Nexus"</span><label class="sw"><input type="checkbox" id="wakeOn"><i></i></label></div>
+      <div class="row"><span>Voice</span><select id="voiceSel"></select><button id="voiceTest">Test</button></div>
       <div class="meter"><div id="meterFill"></div></div><div id="meterText" class="small"></div>
     </section>
     <section><h4>FOLDERS SHE MAY LIST WITHOUT ASKING</h4><div id="folders" class="small"></div><button id="addFolder">Add folder</button></section>
