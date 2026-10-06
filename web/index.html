@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXUS // study beyond limits</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="hud" id="hud" data-state="idle">
+
+  <aside class="nav panel">
+    <div class="brand">NEXUS<small>STUDY BEYOND LIMITS</small><span class="ver">v0.1 phase 1</span></div>
+    <nav>
+      <a class="on">Talk</a>
+      <a class="lock" title="Phase 3">Notes <i>P3</i></a>
+      <a class="lock" title="Phase 4">Screen <i>P4</i></a>
+      <a class="lock" title="Phase 5">Camera <i>P5</i></a>
+      <a class="lock" title="Later">Quiz battle <i>SOON</i></a>
+    </nav>
+    <div class="quote">"Discipline today.<br>A brighter you<br>tomorrow."</div>
+  </aside>
+
+  <main class="stage panel" id="stage">
+    <img src="assets/nexus.jpg" alt="Nexus" class="portrait" id="portrait">
+    <div class="visor-glow"></div>
+    <div class="scan"></div>
+    <div class="bubble" id="bubble"><span id="bubbleText">Press the mic or type. I understand Tamil and English.</span></div>
+    <div class="tag" id="stateTag">IDLE</div>
+  </main>
+
+  <section class="side">
+    <div class="panel status">
+      <h3>SYSTEM</h3>
+      <div class="row"><span>Ollama</span><b id="stOllama" class="bad">checking</b></div>
+      <div class="row"><span>Model</span>
+        <select id="model"></select></div>
+      <div class="row"><span>Voice in</span>
+        <div class="seg" id="langSeg"><button data-l="en-IN" class="on">EN</button><button data-l="ta-IN">தமிழ்</button></div></div>
+      <div class="row"><span>Speak replies</span><label class="sw"><input type="checkbox" id="speakOn" checked><i></i></label></div>
+      <div class="row"><span>Tamil voice</span><b id="stTamil" class="bad">checking</b></div>
+      <div class="hint" id="hint"></div>
+    </div>
+    <div class="panel log" id="log"></div>
+  </section>
+
+  <section class="dock panel">
+    <button class="mic" id="mic" title="Talk (click to start, click again to stop)" aria-label="microphone">
+      <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V22h2v-3.1A7 7 0 0 0 19 12z"/></svg>
+    </button>
+    <div class="wavebox">
+      <canvas id="wave" width="600" height="56"></canvas>
+      <div class="live" id="live">Tap the mic and speak</div>
+    </div>
+    <div class="chips">
+      <button data-p="Explain this topic simply: ">Explain</button>
+      <button data-p="Quiz me with 3 short questions on: ">Quiz me</button>
+      <button data-p="Summarize in 3 points: ">Summarize</button>
+      <button data-p="இதை எளிமையாக சொல்லு: ">இதை எளிமையாக சொல்லு</button>
+    </div>
+    <form class="type" id="form">
+      <input id="input" autocomplete="off" placeholder="Type here  |  இங்கே தட்டச்சு செய்யுங்கள்">
+      <button type="submit" id="send">SEND</button>
+      <button type="button" id="stop" class="stopb" hidden>STOP</button>
+      <button type="button" id="clear" class="ghost" title="Clear chat">CLEAR</button>
+    </form>
+  </section>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
