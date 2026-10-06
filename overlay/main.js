@@ -62,7 +62,7 @@ ipcMain.on("ui:interactive", (_e, v) => {
 function state() {
   const s = settings.get();
   return {
-    private: s.private, paused: s.paused, speak: s.speak, groqModel: s.groqModel, ollamaModel: s.ollamaModel,
+    private: s.private, paused: s.paused, speak: s.speak, voiceName: s.voiceName, handsFree: s.handsFree, wakeWord: s.wakeWord, groqModel: s.groqModel, ollamaModel: s.ollamaModel,
     allowedFolders: s.allowedFolders, hasKey: settings.hasKey(),
     tokens: settings.tokensToday(), tokenLimit: s.tokenLimitPerDay,
     facts: memory.facts(), history: memory.history().slice(-20),
@@ -105,6 +105,7 @@ app.whenReady().then(() => {
     { label: win.isVisible() ? "Hide Nexus" : "Show Nexus", click: () => { win.isVisible() ? win.hide() : win.show(); rebuild(); } },
     { label: "Talk (Ctrl+Shift+Space)", click: () => { win.show(); send("hotkey", "talk"); } },
     { label: "Private mode (local only)", type: "checkbox", checked: settings.get().private, click: (i) => { settings.set({ private: i.checked }); send("notice", { type: "state" }); } },
+    { label: "Hands-free listening (Ctrl+Shift+M)", type: "checkbox", checked: settings.get().handsFree, click: (i) => { settings.set({ handsFree: i.checked }); send("notice", { type: "state" }); } },
     { label: "Pause all actions (Ctrl+Shift+P)", type: "checkbox", checked: settings.get().paused, click: (i) => { settings.set({ paused: i.checked }); send("notice", { type: "state" }); } },
     { type: "separator" },
     { label: "Quit", click: () => app.quit() }
@@ -112,6 +113,7 @@ app.whenReady().then(() => {
   tray.setToolTip("Nexus"); rebuild(); tray.on("click", () => { win.isVisible() ? win.hide() : win.show(); rebuild(); });
 
   globalShortcut.register("Control+Shift+Space", () => { win.show(); send("hotkey", "talk"); });
+  globalShortcut.register("Control+Shift+M", () => { settings.set({ handsFree: !settings.get().handsFree }); send("notice", { type: "state" }); rebuild(); });
   globalShortcut.register("Control+Shift+P", () => { settings.set({ paused: !settings.get().paused }); send("notice", { type: "state" }); rebuild(); });
 });
 app.on("window-all-closed", (e) => e.preventDefault());
