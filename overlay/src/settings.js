@@ -8,6 +8,9 @@ const DEFAULTS = {
   private: false,            // true = local Ollama only, nothing leaves the laptop
   paused: false,             // true = no tools run at all
   speak: true,
+  voiceName: "",             // "" = auto-pick a male voice
+  handsFree: false,          // always listening (only after he turns it on)
+  wakeWord: true,            // hands-free only acts on speech that starts with "Nexus"
   groqModel: "openai/gpt-oss-120b",
   ollamaModel: "gemma3",
   allowedFolders: [],
@@ -32,7 +35,7 @@ function createSettings(dir, safeStorage) {
   return {
     get: () => ({ ...data }),
     set(patch) {
-      const allowed = ["private", "paused", "speak", "groqModel", "ollamaModel", "allowedFolders"];
+      const allowed = ["private", "paused", "speak", "voiceName", "handsFree", "wakeWord", "groqModel", "ollamaModel", "allowedFolders"];
       for (const k of Object.keys(patch)) if (allowed.includes(k)) data[k] = patch[k];
       save(); return { ...data };
     },
